@@ -1,7 +1,7 @@
 Задание 1.
 #Список логинов курьеров с количеством их заказов в статусе «В доставке».
 SELECT c.login,
-       COUNT(o.courierId)
+       COUNT(*)
 FROM "Couriers" AS c
 JOIN "Orders" AS o ON c."id"=o."courierId"
 WHERE o."inDelivery"=TRUE
