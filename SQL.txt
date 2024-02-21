@@ -1,0 +1,21 @@
+Задание 1.
+#Список логинов курьеров с количеством их заказов в статусе «В доставке».
+SELECT c.login,
+       COUNT(o.courierId)
+FROM "Couriers" AS c
+JOIN "Orders" AS o ON c."id"=o."courierId"
+WHERE o."inDelivery"=TRUE
+GROUP BY c."login"; 
+#Заказ отображается в базе данных. Баг - заказ задвоен у курьера после взятия в работу
+
+
+Задание 2.
+#Все трекеры заказов и их статусы.
+SELECT track,
+CASE
+    WHEN finished=TRUE THEN 2
+    WHEN cancelled=TRUE THEN -1
+    WHEN "inDelivery"=TRUE THEN 1
+    ELSE 0
+END AS status
+FROM "Orders";
